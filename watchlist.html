@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en-US">
+    <meta charset="UTF-8" />
+    <title>Watchlist</title>
+    <link rel="icon" href="assets/img/watchlist/money.svg" />
+    <link rel="stylesheet" href="assets/css/nord.css" />
+    <link rel="stylesheet" href="assets/css/watchlist/watchlist.css" />
+    <link
+      rel="stylesheet"
+      media="screen and (min-device-width: 1080.01px)"
+      href="assets/css/watchlist/watchlistDesktop.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (max-device-width: 1080px)"
+      href="assets/css/watchlist/watchlistMobile.css"
+    />
+    <!-- FAVICON -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <!--  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="assets/js/watchlist/watchlistHelper.js"></script>
+    <script src="assets/js/watchlist/watchlist.js"></script>
+  </head>
+  <body>
+    <div id="topSection" class="topSection invisible">
+      <div>
+        <nobr id="portfolioModeText">PORTFOLIO MODE:</nobr
+        ><!--
+      --><input
+          type="checkbox"
+          id="modeCheckbox"
+          class="modeCheckbox"
+          onclick="updateMode()"
+        />
+      </div>
+      <div id="cashDiv" class="cashDiv">
+        <nobr id="cashText">CASH:</nobr
+        ><!--
+        --><input
+          type="text"
+          id="cashInput"
+          onfocus="this.placeholder = ''"
+        /><!--
+        --><button id="cashButton" onclick="changeCash()">UPDATE</button>
+      </div>
+      <div>
+        <input
+          type="text"
+          id="symbolInput"
+          oninput="this.value = this.value.toUpperCase()"
+          maxlength="5"
+          placeholder="SYMBOL"
+          onfocus="this.placeholder = ''"
+          onblur="this.placeholder = 'SYMBOL'"
+        /><!--
+      --><select id="typeInput" required>
+          <option value="" disabled selected hidden>SOURCE</option>
+          <option value="cnbc">CNBC</option>
+          <option value="coinbase">COINBASE</option> </select
+        ><!--
+      --><button id="addButton" onclick="addAsset()">ADD</button>
+      </div>
+      <div id="message" class="message">&nbsp;</div>
+    </div>
+    <table id="watchlistTable" class="watchlistTable">
+      <thead>
+        <tr id="tableHeaderRow">
+          <th class="nameCell">
+            <div class="nameData">NAME</div>
+          </th>
+          <th class="priceCell">
+            <div class="priceData">PRICE</div>
+          </th>
+          <th class="changeCell">
+            <div class="changeData">CHANGE %</div>
+          </th>
+          <th class="valueCell">
+            <div class="valueData">VALUE</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+      <tfoot>
+        <tr id="tableFooter" class="tableFooter">
+          <th class="nameCell">
+            <div class="nameData">TOTAL VALUE</div>
+          </th>
+          <th class="priceCell"></th>
+          <th class="changeCell"></th>
+          <th class="valueCell">
+            <div id="totalValue" class="valueData"></div>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+    <div id="editForm" class="editForm hidden">
+      <div class="editFormContent">
+        <div class="closeButtonContainer">
+          <img
+            id="closeButton"
+            class="closeButton"
+            src="assets/img/watchlist/close.svg"
+          />
+        </div>
+        <h2 id="editFormHeader" class="editFormHeader">SYMBOL</h2>
+        <div id="amountDisplay"></div>
+        <div>
+          <button onclick="removeAsset()">REMOVE</button>
+        </div>
+        <div>
+          <button onclick="moveAssetUp()">MOVE UP</button>
+        </div>
+        <div>
+          <button onclick="moveAssetDown()">MOVE DOWN</button>
+        </div>
+        <div class="enterAmount">
+          <nobr>AMOUNT:</nobr
+          ><!--
+          --><input type="text" id="amountInput" /><!--
+          --><button onclick="changeAmount()">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

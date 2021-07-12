@@ -1,0 +1,77 @@
+body {
+  background-color: var(--nord0);
+  color: var(--nord4);
+  font-family: 'Google Sans', sans-serif;
+  margin: 0 auto 3em auto;
+  text-align: center;
+  font-size: 18px;
+}
+button,
+input,
+select {
+  text-align: center;
+  text-align-last: center;
+  background-color: var(--nord2);
+  color: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  padding: 0.3em 0.6em 0.3em 0.6em;
+  outline: none;
+  border: var(--nord4) 0.05em solid;
+  box-sizing: border-box;
+  height: 2em;
+}
+.topSection,
+.watchlistTable {
+  min-width: 30em;
+  width: 95vw;
+  max-width: 45em;
+  margin: auto;
+  text-align: left;
+}
+
+/* watchlist table */
+.watchlistTable {
+  border-collapse: collapse;
+}
+.watchlistTable th {
+  padding: 0.3em 0 0.3em 0;
+}
+.watchlistTable td {
+  padding: 0.6em 0 0.6em 0;
+  max-width: 0;
+}
+.watchlistTable tr {
+  border: 0.07em solid var(--nord4);
+  background-color: var(--nord1);
+}
+.watchlistTable
+  :is(.priceCell.portfolio, .changeCell.portfolio, .valueCell.portfolio) {
+  text-align: right;
+  width: 22% !important;
+}
+.watchlistTable .nameData {
+  margin-left: 0.3em;
+}
+.watchlistTable .valueData {
+  margin-right: 0.3em;
+}
+.watchlistTable .fullName {
+  font-size: 0.7em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.watchlistTable tfoot th {
+  font-weight: normal;
+}
+.watchlistTable
+  :is(tbody :is(.priceData, .changeData, .valueData), tfoot .valueData) {
+  font-family: 'Courier Prime', monospace;
+}
+
+/* edit form */
+.editFormContent .closeButton {
+  padding: 0.3em 0.3em 0 0;
+  width: 7%;
+}

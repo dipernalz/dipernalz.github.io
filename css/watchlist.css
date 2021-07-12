@@ -1,0 +1,112 @@
+:is(button:hover, input:hover, select:hover, button:focus, input:focus, select:focus) {
+  background-color: var(--nord0);
+}
+::placeholder {
+  color: gray;
+  opacity: 1;
+}
+select:required:invalid {
+  color: gray;
+}
+option {
+  color: var(--nord4);
+}
+.hidden {
+  display: none;
+}
+
+/* top section */
+.topSection.visible {
+  padding-top: 0.5em;
+}
+.topSection.invisible {
+  padding-top: 3em;
+}
+.topSection > * {
+  margin-bottom: 0.5em;
+  display: none;
+}
+.topSection > * > * {
+  margin-right: 0.5em;
+}
+.topSection :is(input, select) {
+  width: 8em;
+}
+.topSection button {
+  width: 6em;
+}
+.topSection .modeCheckbox {
+  height: 0.8em;
+  width: 0.8em !important;
+}
+.topSection .message.success {
+  color: rgb(0, 150, 0);
+}
+.topSection .message.failure {
+  color: rgb(200, 0, 0);
+}
+.topSection .cashDiv.invisible {
+  display: none !important;
+}
+
+/* watchlist table */
+.watchlistTable tr:hover td {
+  background-color: var(--nord0);
+}
+.watchlistTable .nameCell {
+  text-align: left;
+}
+.watchlistTable :is(.priceCell, .changeCell, .valueCell) {
+  text-align: right;
+  width: 33%;
+}
+.watchlistTable tbody .changeData {
+  border-radius: 8px;
+  padding: 0.5em 0.3em 0.5em 0;
+  width: 4em;
+  float: right;
+}
+.watchlistTable .changeData.negative {
+  background-color: rgb(200, 0, 0);
+}
+.watchlistTable .changeData.positive {
+  background-color: rgb(0, 150, 0);
+}
+.watchlistTable .changeData.neutral {
+  background-color: gray;
+}
+.watchlistTable .tableFooter.invisible {
+  display: none !important;
+}
+
+/* edit form */
+.editForm {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.editFormContent .closeButtonContainer {
+  text-align: right;
+}
+.editFormContent {
+  background: var(--nord0);
+  width: 20em;
+  margin: 10vh auto 0 auto;
+}
+.editFormContent :is(.closeButtonContainer, .editFormHeader) {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.editFormContent > * {
+  padding-bottom: 1em;
+}
+.editFormContent button {
+  width: 8em;
+}
+.editFormContent .enterAmount :is(button, input) {
+  width: 6em;
+  margin-left: 0.5em;
+}
