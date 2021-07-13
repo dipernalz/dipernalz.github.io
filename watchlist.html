@@ -3,19 +3,6 @@
   <head lang="en-US">
     <meta charset="UTF-8" />
     <title>Watchlist</title>
-    <link rel="icon" href="assets/favicon/apple-touch-icon.png" />
-    <link rel="stylesheet" href="assets/css/nord.css" />
-    <link rel="stylesheet" href="assets/css/watchlist/watchlist.css" />
-    <link
-      rel="stylesheet"
-      media="screen and (min-device-width: 1080.01px)"
-      href="assets/css/watchlist/watchlistDesktop.css"
-    />
-    <link
-      rel="stylesheet"
-      media="screen and (max-device-width: 1080px)"
-      href="assets/css/watchlist/watchlistMobile.css"
-    />
     <!-- FAVICON -->
     <link
       rel="apple-touch-icon"
@@ -35,7 +22,7 @@
       href="assets/favicon/favicon-16x16.png"
     />
     <link rel="manifest" href="assets/favicon/site.webmanifest" />
-    <!--  -->
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -43,12 +30,25 @@
       href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap"
     />
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/nord.css" />
+    <link rel="stylesheet" href="assets/css/watchlist.css" />
+    <link
+      rel="stylesheet"
+      media="screen and (min-device-width: 1080.01px)"
+      href="assets/css/watchlistDesktop.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (max-device-width: 1080px)"
+      href="assets/css/watchlistMobile.css"
+    />
+    <!-- JAVSCRIPT -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="assets/js/watchlist/watchlistHelper.js"></script>
-    <script src="assets/js/watchlist/watchlist.js"></script>
+    <script src="assets/js/watchlist.js"></script>
   </head>
   <body>
     <div id="topSection" class="topSection invisible">
@@ -128,7 +128,7 @@
           <img
             id="closeButton"
             class="closeButton"
-            src="assets/img/watchlist/close.svg"
+            src="assets/img/close.svg"
           />
         </div>
         <h2 id="editFormHeader" class="editFormHeader">SYMBOL</h2>
