@@ -1,0 +1,25 @@
+.content {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  flex-flow: column;
+  padding: 0 2em 0 2em;
+}
+.project {
+  max-width: 50em;
+  margin-top: 2em;
+}
+.project h1 {
+  margin: 0 0 0.5em 0;
+}
+.project p {
+  margin: 0 0 1em 0;
+  line-height: 1.5em;
+}
+.project .example-image {
+  text-align: center;
+}
+.project .example-image img {
+  width: 100%;
+  max-width: 30em;
+}
