@@ -5,6 +5,8 @@ body {
   margin: 0 auto 3em auto;
   text-align: center;
   font-size: 18px;
+  width: 100vw;
+  overflow-x: hidden;
 }
 button,
 input,

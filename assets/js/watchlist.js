@@ -223,7 +223,7 @@ function loadWebSocket() {
 async function addAsset() {
   const symbol = $('#symbolInput').val();
   const source = $('#typeInput').val();
-  if (symbol == '' || source == null) {
+  if (symbol == '' || source == null || symbol.includes(' ')) {
     displayMessage('INVALID INPUT', false);
     return;
   }
@@ -284,7 +284,7 @@ async function addAsset() {
     } else {
       displayMessage('SYMBOL ADDED', true);
     }
-    name = data.name;
+    name = data.onAirName;
     type =
       data.assetType == 'STOCK' || data.assetType == 'INDEX'
         ? 'stock'
@@ -310,15 +310,15 @@ async function addAsset() {
 
 function removeAsset() {
   const symbol = $('#editFormHeader').html();
-  $(getJQueryId(symbol, '')).remove();
+  $(jqid(symbol, '')).remove();
   $('#editForm').addClass('hidden');
 
   if (assetMap.get(symbol).isCrypto()) {
-    const cbId = `${symbol.slice(0, symbol.length - 7)}-USD`;
+    const cbid = `${symbol.slice(0, symbol.length - 7)}-USD`;
     ws.send(
       JSON.stringify({
         type: 'unsubscribe',
-        channels: [{ name: 'ticker', product_ids: [cbId] }],
+        channels: [{ name: 'ticker', product_ids: [cbid] }],
       })
     );
   }
@@ -335,7 +335,7 @@ function moveAssetUp() {
   const assetIndex = getAssetIndex(symbol);
   if (assetIndex > 0) {
     const priorSymbol = assetList[assetIndex - 1].symbol;
-    $(getJQueryId(symbol, '')).insertBefore(getJQueryId(priorSymbol, ''));
+    $(jqid(symbol, '')).insertBefore(jqid(priorSymbol, ''));
     swap(assetList, assetIndex, assetIndex - 1);
     updateAssetStorage();
   }
@@ -346,7 +346,7 @@ function moveAssetDown() {
   const assetIndex = getAssetIndex(symbol);
   if (assetIndex < assetList.length - 1) {
     const nextSymbol = assetList[assetIndex + 1].symbol;
-    $(getJQueryId(nextSymbol, '')).insertBefore(getJQueryId(symbol, ''));
+    $(jqid(nextSymbol, '')).insertBefore(jqid(symbol, ''));
     swap(assetList, assetIndex, assetIndex + 1);
     updateAssetStorage();
   }
@@ -421,7 +421,6 @@ async function updateCNBCPrices() {
       for (const symbol of symbolList) {
         updateRow(symbol);
       }
-
       if (delay != 1000) {
         delay = 1000;
         for (const [_, asset] of assetList) {
@@ -494,14 +493,14 @@ function updateRow(symbol) {
     asset.firstUpdate = true;
   }
 
-  $(getJQueryId(asset.symbol, '-price')).html(
+  $(jqid(asset.symbol, '-price')).html(
     new Intl.NumberFormat('en-US', {
       minimumFractionDigits: asset.precision,
       maximumFractionDigits: asset.precision,
     }).format(asset.price)
   );
 
-  const changeData = $(getJQueryId(asset.symbol, '-change'));
+  const changeData = $(jqid(asset.symbol, '-change'));
   if (asset.change < 0) {
     changeData.removeClass(['positive', 'neutral']).addClass('negative');
   } else if (asset.change > 0) {
@@ -517,7 +516,7 @@ function updateRow(symbol) {
     }).format(asset.change)
   );
 
-  $(getJQueryId(asset.symbol, '-value')).html(
+  $(jqid(asset.symbol, '-value')).html(
     asset.getValue() > 0
       ? new Intl.NumberFormat('en-US', {
           maximumFractionDigits: 0,
@@ -540,8 +539,8 @@ function displayMessage(message, success) {
   }, 3000);
 }
 
-function getJQueryId(symbol, addend) {
-  return `#${symbol}${addend}`.replace(/\./g, '\\.');
+function jqid(symbol, addend) {
+  return `#${symbol}${addend}`.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1');
 }
 
 function getAssetIndex(symbol) {
